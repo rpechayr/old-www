@@ -1,0 +1,12 @@
+# Site settings
+title: Romain Péchayre 
+email: rpechayr@gmail.com
+description: "I am en entrepreneur based in Paris "
+baseurl: ""
+url: "http://romain.pechayre.me"
+twitter_username: rpechayr
+github_username:  rpechayr
+
+# Build settings
+markdown: kramdown
+permalink: pretty
