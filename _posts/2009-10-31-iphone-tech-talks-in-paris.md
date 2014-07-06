@@ -1,6 +1,7 @@
 ---
 layout: post
 title: iPhone tech talks in Paris
+category: blog
 ---
 
 
