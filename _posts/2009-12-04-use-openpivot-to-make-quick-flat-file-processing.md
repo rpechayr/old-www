@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Use openpivot to make quick flat file processing
+category: blog
 ---
 
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Interaction between iPhone apps
+category: blog
 ---
 
 

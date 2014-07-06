@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Openpivot tutorial
+category: blog
 ---
 
 
