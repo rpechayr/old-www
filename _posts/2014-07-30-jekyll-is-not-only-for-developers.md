@@ -1,6 +1,6 @@
 ---
 layout: post
-title: No, Jekyll isn't for only for geeks
+title: No, Jekyll isn't for only for developers
 category: blog
 ---
 **TL;DR** -  Anyone can use jekyll on github pages just like anyone can post content on tumblr. You just need to know about the add and edit button on github
