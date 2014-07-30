@@ -36,7 +36,7 @@ Once you have your Jekyll website hosted on github pages, you can create article
 -   **To create an article**: navigate to the `_posts` directory and create a new file using the *discrete* + button![](https://camo.githubusercontent.com/8fdc501d6746c307ada3d168e5db7b8d1b12cd75/687474703a2f2f636c2e6c792f4c4c65302f6e65772d66696c652e6a7067) as explained [here](https://github.com/blog/1327-creating-files-on-github).
 You need to format the name of this file using the current date, like `2014-07-30-my-new-article.md` to make it work, which is not a big deal. 
 
-- **To change the content of any file**: click the *discrete* edit button as [explained here](https://help.github.com/articles/editing-files-in-your-repository)
+- **To change the content of any file**: click the *discrete* edit button as [explained here](https://help.github.com/articles/editing-files-in-your-repository). you'll notice that you can add a comment when saving your modifications. This comment will actually be the git commit message, but you don't really to care about it, except that the whole history of your site will be available in the commits tab of your github project. 
 
 
 
