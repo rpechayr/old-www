@@ -1,6 +1,7 @@
 ---
 layout: page
 permalink: /
+description: Salut
 ---
 
 Hello, I am a senior software engineer based in Paris currently working as CTO at [Applidget](http://applidget.com), a company I joined as co-founder in 2010. We build online platforms for event organizers and also work for other startups to help them define and develop their products.
