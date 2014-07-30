@@ -3,7 +3,7 @@ layout: post
 title: No, Jekyll isn't for only for developers
 category: blog
 ---
-**TL;DR** -  Anyone can use jekyll on github pages just like anyone can post content on tumblr. You just need to know about the [add](https://help.github.com/articles/creating-new-files) and [edit](https://help.github.com/articles/editing-files-in-your-repository) button on github.
+**TL;DR** -  Anyone can use jekyll on Github pages just like anyone can post content on Tumblr. You just need to know about the [add](https://help.github.com/articles/creating-new-files) and [edit](https://help.github.com/articles/editing-files-in-your-repository) button on Github.
 
 ## _Forever_ blogging platforms
 
@@ -13,10 +13,13 @@ Online blogging platforms have suffered from these recent events, and people are
 
 ## Jekyll on Github pages
 
-A powerful solution that fits people requirements are [Github pages](https://pages.github.com/) powered by [Jekyll](http://jekyllrb.com/). Jekyll is an amazing CMS because it is simple in its conception and does not have a back-office as you just create static pages. Not relying on a back-office is an excellent benefit against time erosion. It will never make you feel like you are using a 5 year old CMS (tumblr interface is ugly). However, [Jekyll](http://jekyllrb.com/) does have powerfull posting features. Just just need to create a new [markdown](http://daringfireball.net/projects/markdown/) file in the `_posts` directory and once deployed it is going to make a new article, available in your blog and in the generated RSS feed.
-In terms of **performance**, github pages allow you to have the most powerful site ever since it is based on static pages (jekyll builds your website when you push it to github) and these pages are eventually [served by a CDN](https://github.com/blog/1715-faster-more-awesome-github-pages). If you are concerned about the **sustainability**, github won't be purchased and shut down by FYGT anytime soon, since they [raised $100 million back in 2012](http://peter.a16z.com/2012/07/09/software-eats-software-development/) and are already profitable.
+A powerful solution that fits people requirements are [Github pages](https://pages.github.com/) powered by [Jekyll](http://jekyllrb.com/). Jekyll is an amazing CMS because it is simple in its conception and does not have a back-office as you just create static pages. Not relying on a back-office is an excellent benefit against time erosion. It will never make you feel like you are using a CMS from the previous decade (tumblr interface is ugly). However, [Jekyll](http://jekyllrb.com/) does have powerfull posting features. You just need to create a new [markdown](http://daringfireball.net/projects/markdown/) file in the `_posts` directory and once deployed it is going to generate a new article, available in your blog and in the generated RSS feed.
 
-With Jekyll on github pages, you have a long term free online solution (*forever* available) powered by on open source technology (*forever* available).
+In terms of **performance**, github pages are just static pages so you can't do better (jekyll builds your website when you push it to Github) and these pages are eventually [served by a CDN](https://github.com/blog/1715-faster-more-awesome-github-pages) to minimize latency.
+
+If you are concerned about the **sustainability** issue, github won't be purchased and shut down by FYGT anytime soon, since they [raised $100 million back in 2012](http://peter.a16z.com/2012/07/09/software-eats-software-development/) and have been profitable for years.
+
+With Jekyll on github pages, you have a long term free online solution (*forever* available) powered by on open source technology (*forever* available even if Github pages are shut down).
 
 ## Sure, Jekyll has been made for developers
 
