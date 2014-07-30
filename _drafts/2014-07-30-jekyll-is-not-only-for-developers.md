@@ -31,13 +31,13 @@ I disagree. Jekyll is not only for developers.
 
 ## Using Jekyll with _zero_ programming tools
 
-It turns out you can use [Jekyll](http://jekyllrb.com/) without using a terminal, git, amazon S3 or anything like that. The only things you need are:
+It turns out you can use [Jekyll](http://jekyllrb.com/) without using a terminal, git, amazon S3 or anything like that. Everthing happens on github.com. The only things you need are:
 - A (free) [Github account](https://github.com/join)
-- A Jekyll website running on github pages. Technically this can be done by forking someone else’s Jekyll site on github, which is as simple as choosing a theme in tumblr (to fork a repo follow step 1 of [this tutorial](https://help.github.com/articles/fork-a-repo))
+- A Jekyll website running on Github pages. Technically this can be done by forking someone else’s Jekyll site on Github, which is as simple as choosing a theme in Tumblr (to fork a repo follow step 1 of [this tutorial](https://help.github.com/articles/fork-a-repo))
 
 *Of course, having some knowledge html/css/javascript can help, but it is not mandatory. Anyway, many blogs are actually bootstrapped by developers but content is managed by non technical people.*
 
-Once you have your [Jekyll](http://jekyllrb.com/) website hosted on Github pages, you can create articles, write content (as of July 2014, you can’t upload pictures ni github without a terminal) : 
+Once you have your [Jekyll](http://jekyllrb.com/) website hosted on Github pages, you can create articles, write content (as of July 2014, you can’t upload pictures in Github without a terminal or other external tools) : 
 
 -   **To create an article**: navigate to the `_posts` directory and create a new file using the *discrete* + button
 <div><img src="https://camo.githubusercontent.com/8fdc501d6746c307ada3d168e5db7b8d1b12cd75/687474703a2f2f636c2e6c792f4c4c65302f6e65772d66696c652e6a7067"> </div> as explained [here](https://github.com/blog/1327-creating-files-on-github).
