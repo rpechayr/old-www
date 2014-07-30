@@ -10,5 +10,5 @@ Prior to Applidget, I was working for Air France as an operations research analy
 
 I attended  [Ecole Polytechnique](http://www.polytechnique.edu/) in France from 2004 to 2007 and then graduated from the [London School of Economics and Political Science](http://www.lse.ac.uk/home.aspx) in 2008.
 
-When I am not at work, like everyone I love speding time with my family. I also like drumming, kiteboarding, skiing and taking photos.
+When I am not at work, I love spending time with my family. I also like drumming, kiteboarding, skiing and taking photos.
 
