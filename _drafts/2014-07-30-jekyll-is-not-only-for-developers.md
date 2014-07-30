@@ -33,11 +33,15 @@ Of course, having some knowledge html/css/javascript could help, but it is not f
 
 Once you have your Jekyll website hosted on github pages, you can create articles, write content (as of July 2014, you can’t upload pictures ni github without a terminal) : 
 
--   **To create an article**: navigate to the `_posts` directory and create a new file using the *discrete* + button![](https://camo.githubusercontent.com/8fdc501d6746c307ada3d168e5db7b8d1b12cd75/687474703a2f2f636c2e6c792f4c4c65302f6e65772d66696c652e6a7067) as explained [here](https://github.com/blog/1327-creating-files-on-github).
+-   **To create an article**: navigate to the `_posts` directory and create a new file using the *discrete* + button
+<div><img src="https://camo.githubusercontent.com/8fdc501d6746c307ada3d168e5db7b8d1b12cd75/687474703a2f2f636c2e6c792f4c4c65302f6e65772d66696c652e6a7067"> </div> as explained [here](https://github.com/blog/1327-creating-files-on-github).
 You need to format the name of this file using the current date, like `2014-07-30-my-new-article.md` to make it work, which is not a big deal. 
 
 - **To change the content of any file**: click the *discrete* edit button as [explained here](https://help.github.com/articles/editing-files-in-your-repository). you'll notice that you can add a comment when saving your modifications. This comment will actually be the git commit message, but you don't really to care about it, except that the whole history of your site will be available in the commits tab of your github project. 
 
+##Limitations
 
+Jekyll on github pages is great, but don't expect it to have all possible CMS features you could think of. First of all, you can see it as a limitation or not, but you need to learn the basics of the Markdown language. Markdown is the contrary of html. It does not look like code, because it does not have any markup, and you write it naturally like you write a simple text email. You only need to know how to format text as titles, bold, italic, and links, and you can be up and running. 
+Also github does not allow uploading non text files directly from github.com website. So if you want to add files like photos you can't do that with this. A simple way around is to use [imgur](http://imgur.com/), which allows you to upload images and get the markdown version to paste it to your github page. 
 
 
