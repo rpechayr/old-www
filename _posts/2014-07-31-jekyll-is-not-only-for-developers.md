@@ -17,7 +17,7 @@ A powerful solution that fits people requirements are [Github pages](https://pag
 
 In terms of **performance**, github pages are just static pages so you can't do better (Jekyll builds your website when you push it to Github) and these pages are eventually [served by a CDN](https://github.com/blog/1715-faster-more-awesome-github-pages) to minimize latency.
 
-If you are concerned about the **sustainability** issue, github won't be purchased and shut down by FYGT anytime soon, since they [raised $100 million back in 2012](http://peter.a16z.com/2012/07/09/software-eats-software-development/) and have been profitable for years.
+If you are concerned about the **sustainability** issue, github won't be acquired and shut down by FYGT anytime soon, since they [raised $100 million back in 2012](http://peter.a16z.com/2012/07/09/software-eats-software-development/) and have been profitable for years.
 
 With Jekyll on github pages, you have a long term free online solution (*forever* available) powered by on open source technology (*forever* available even if Github pages are shut down).
 
