@@ -32,6 +32,7 @@ I disagree. Jekyll is not only for developers.
 ## Using Jekyll with _zero_ programming tools
 
 It turns out you can use [Jekyll](http://jekyllrb.com/) without using a terminal, git, amazon S3 or anything like that. Everthing happens on github.com. The only things you need are:
+
 - A (free) [Github account](https://github.com/join)
 - A Jekyll website running on Github pages. Technically this can be done by forking someone else’s Jekyll site on Github, which is as simple as choosing a theme in Tumblr (to fork a repo follow step 1 of [this tutorial](https://help.github.com/articles/fork-a-repo))
 
