@@ -12,3 +12,5 @@ github_username:  rpechayr
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+exclude: ["Readme.md"]
