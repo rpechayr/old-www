@@ -258,6 +258,12 @@ a:visited { color: #205caa; }
   border-radius: 3px;
 }
 
+.profile-icons li a {
+  float: left;
+  margin-left: 20px;
+  color: #828282;
+}
+
 .post pre.terminal code { background-color: #333; }
 
 /* Syntax highlighting styles */
