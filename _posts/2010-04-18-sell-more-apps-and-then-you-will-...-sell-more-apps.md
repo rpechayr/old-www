@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Sell more apps and then you will ... sell more apps !
+description: A topic not so often elaborated about the app store is the effect of ranking. This post is only intended to emphasize this fact, and of course it is not sure that apple could find a better  solution.
 category: blog
 ---
 

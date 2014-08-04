@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Use openpivot to make quick flat file processing
+description: I am pleased to announce the release of my first open source project .Openpivot was designed to efficiently reproduce the functionality of MS excel pivot tables
 category: blog
 ---
 

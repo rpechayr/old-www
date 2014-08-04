@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Openpivot tutorial
+description: In this article, we walk through a simple openpivot tutorial.
 category: blog
 ---
 
