@@ -1,3 +1,9 @@
+---
+layout: post
+title: MongoDB inventory control using two-phase commit
+category: blog
+---
+
 #MongoDB inventory control using two-phase commit
 
 *This is the first post from a series around two-phase commit in MongoDB*
