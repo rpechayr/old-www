@@ -8,7 +8,6 @@ My name is Romain Péchayre I am a senior software engineer based in Paris curre
 
 Prior to Applidget, I was working for Air France as an operations research analyst. 
 
-I attended  [Ecole Polytechnique](http://www.polytechnique.edu/) in France from 2004 to 2007 and then graduated from the [London School of Economics and Political Science](http://www.lse.ac.uk/home.aspx) in 2008.
+I attended the [Ecole Polytechnique](http://www.polytechnique.edu/) in France from 2004 to 2007 and then graduated from the [London School of Economics and Political Science](http://www.lse.ac.uk/home.aspx) in 2008.
 
 When I am not at work, I love spending time with my family. I also like drumming, kiteboarding, skiing and taking photos.
-
