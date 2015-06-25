@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Beyond the Oauth 2 client - Anthentication users accross multiple web applications
+title: Authentication users accross multiple web applications
 category: blog
 ---
 
@@ -8,7 +8,7 @@ category: blog
 
 This post discusses different approaches you can have to perform multi-apps authentication. This is interesting for people willing to build a service oriented infrastructure, where users need to access multiple apps with a single authentication system, beyond the monolithic web app approach many startups begin with.
 
-When your codebase grows and your development team expands, putting all features in one single web applications and having all developers working on the same project can create some frictions. A common and good approach to solve that is to split your codebase into smaller, clearly identified components. Sometimes you even have several products corresponding to multiple web applications. For example, google authenticates the users on https://google.com/accounts, and the corresponding session persists accross all google products, like youtube, gmail, blogger, etc.
+When your codebase grows and your development team expands, putting all features in one single web applications and having all developers working on the same project can create some frictions. Any relation between to objects can be created, and if you are using an MVC framework like rails, cascading callbacks can become a real mess for large applications. A common and good approach to solve that is to split your codebase into smaller, clearly identified components. Sometimes you even have several products corresponding to multiple web applications. For example, google authenticates the users on https://google.com/accounts, and the corresponding session persists accross all google products, like youtube, gmail, blogger, etc.
 
 Another example of shared authentication is when an independent application uses a popular platform for authentication. This is what happens when some websites asks you to sign in using Facebook, Google, or Githu for example. The most common technology for this is OAuth 2.0, which was not specifically designed for authentication, but still commonly used for that. Oauth 2 has many other benefits than allowing third party authentication, which is the reason why it has become the most used standard. 
 
@@ -24,7 +24,12 @@ In other words, with OAuth2, user profiles are generally replicated between the 
 
 ##Problems when having multiple sessions 
 
-If you want to provide a consistent user experience such as people sign in and out once for every applications, this can be tricky. 
+If you want to provide a consistent user experience such as people sign in and out once for every application, this can be tricky. 
+
+The main problems you can have are : 
+
+- User info synchronization : copying information about the user on multiple databases will make them out of sync, especially if you allow local profile modifications (like when you sign in using facebook and the change your avatar on the application) 
+- Single sign **out** : signing out from an application does not sign you aout from other applications. It can be even worse. If you application redirects any user to the 
 
 Signing in once is not an issue because the session on every application will be lazily created, which means you will be authenticated on a given service only if you visit it. The problem is when you want to sign out once for all platform. Here is how google performs it :
 
