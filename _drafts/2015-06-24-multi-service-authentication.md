@@ -1,64 +1,50 @@
 ---
 layout: post
-title: Authentication users accross multiple web applications
+title: The single sign out problem - reverse engineering Google Accounts
 category: blog
 ---
 
-# Authenticating users accross multiple web applications 
+[Single sign on](https://en.wikipedia.org/wiki/Single_sign-on) is now everywhere. It is used in major tech companies like Facebook and Google, who allow their users to be logged on once across all their products, but also generally allow third party service providers to authenticate their users using an OAuth 2.0 interface. More traditional private companies often have a SSO for their internal websites following a different architecture (most of the time, this SSO is based on Microsoft [Active Directory](https://fr.wikipedia.org/wiki/Active_Directory) or [LDAP](https://fr.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol), or both, and exposes a [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) Interface). The advantage of OAuth 2 is that it also includes complete authorization features to enable third party access to APIs (using OAuth scopes).
 
-This post discusses different approaches you can have to perform multi-apps authentication. This is interesting for people willing to build a service oriented infrastructure, where users need to access multiple apps with a single authentication system, beyond the monolithic web app approach many startups begin with.
+##Signing in, the *easy* part 
 
-When your codebase grows and your development team expands, putting all features in one single web applications and having all developers working on the same project can create some frictions. Any relation between to objects can be created, and if you are using an MVC framework like rails, cascading callbacks can become a real mess for large applications. A common and good approach to solve that is to split your codebase into smaller, clearly identified components. Sometimes you even have several products corresponding to multiple web applications. For example, google authenticates the users on https://google.com/accounts, and the corresponding session persists accross all google products, like youtube, gmail, blogger, etc.
+Almost all information you are going to find about OAuth, OpenId, or SAML refers to how sign in works. For OAuth, you'll learn that it is [not really an authentication solution whereas OpenID is](http://stackoverflow.com/a/1087071).
 
-Another example of shared authentication is when an independent application uses a popular platform for authentication. This is what happens when some websites asks you to sign in using Facebook, Google, or Githu for example. The most common technology for this is OAuth 2.0, which was not specifically designed for authentication, but still commonly used for that. Oauth 2 has many other benefits than allowing third party authentication, which is the reason why it has become the most used standard. 
+Users are generally signed in on the third party provider, even though you may not have set a passwords thanks to a SSO. Therefore, signing in involves being authenticated on the identity provider and then being signed in on the service provider using information from the identity provider. 
 
-##How authentication works on simple web applications
+##Signing out, the tricky part - How Google Account works
 
-Authenticated web apps usually work by first asking the user for a username and a password, and then issuing a session cookie, enabling the user to be authenticated on every request without re-typing his credentials. On every request, the session cookie is generally used to match a user against a database ([Devise](https://github.com/plataformatec/devise) gem does that pretty well for Ruby on Rails). 
+As described above, when a user is signed in though a SSO, he has 2 sessions. One on the identity provider, and one on the service provider. The process of signing out can mean different things. Do you want to close your session on the service provider only, on the identity provider, or both ? 
 
-##Authenticate once for many services
+###1/ As a third party service provider 
 
-The idea behind OAuth 2, is that a remote service has authenticated a user for you (the application), enabling you to query the remote service on this user's behalf. A particular case of that is to fetch the users profile. Therefore combining OAuth 2 with a simple profile API allows you to authenticate and identity a user on a remote platform, without asking him to set a password, type his name, or email, etc. Still, the user is signed in on your local application as a regular user, and once his session is open, there is no difference between a OAuth user and a regular one. For example, the identity of the user is not checked against the remote service on every request. If the user is signed out from the remote service (or his account is blocked), he will still be authenticated on your platform.
+When you are a third party service provider, you generally use Facebook login or Google Accounts to make it easier for your users to create an account, or be able to access some APIs like Facebook Graph API. Signing out only means leaving destroying your local session. Be careful though, because this process does not sign users out from the identity provider, so if your product redirects all unauthenticated user to the service provider, signing out will have no effect, because people will be signed out, then redirected to the identity provider (generally already signed in) and redirected back to your service with a new session. So you must have a landing page asking the user to click on a link to sign in using Facebook or Google for example. 
 
-In other words, with OAuth2, user profiles are generally replicated between the central authentication system and the applications, which means they can be out of sync. This is also an advantage because the central authentication system won't be called on every request and therefore be a small application in terms of infrastructure. With such a system you can scale you infrastructure independently for every service, including the authentication component. 
+###2/ As an application from a family of products
 
-##Problems when having multiple sessions 
+When your company grows and your services expand, there is one point where you will need to have your own SSO. This will allow you to have separated platforms with a consistent user experience. So setting up a SSO is a great pattern. If you are using [Ruby On Rails](http://rubyonrails.org/), [Doorkeeper](https://github.com/doorkeeper-gem/doorkeeper) is a great gem to do that. If you don't want to have your users bother about signing in on every service, you can automatically redirect them when they are not signed in. However, you'll face the same issue as described above. Your users will constantly come back signed in your application. Your need is to not only sign user out from your application, but also sign out from the SSO, and all other services like yours. I recently took a look at how it works with Google Accounts.
 
-If you want to provide a consistent user experience such as people sign in and out once for every application, this can be tricky. 
+###Sign out process in Google Accounts
 
-The main problems you can have are : 
+Before taking a look at it, I thought Google was handling authentication across their products using [a single cookie](http://stackoverflow.com/questions/18492576/share-cookie-between-subdomain-and-domain) as all applications are subdomains of google.com domains. This is absolutely not the case. A very good reason for that is because youtube.com, google.com, google.fr and blogger.com are different domains and [can't share cookies](http://stackoverflow.com/a/4781366/508080). 
 
-- User info synchronization : copying information about the user on multiple databases will make them out of sync, especially if you allow local profile modifications (like when you sign in using facebook and the change your avatar on the application) 
-- Single sign **out** : signing out from an application does not sign you aout from other applications. It can be even worse. If you application redirects any user to the 
+When signing out from gmail a few days ago, I noticed my browser visited blogger.com for 0.5 second. I went back to blogger.com and realized I was logged out. Same on youtube.com. I then tried again and checked all http requests (using the [preserve logs](http://stackoverflow.com/a/12282621/508080) option on chrome inspector). Here is a list of request my browser performs when signing out from gmail : 
 
-Signing in once is not an issue because the session on every application will be lazily created, which means you will be authenticated on a given service only if you visit it. The problem is when you want to sign out once for all platform. Here is how google performs it :
+1. Log out from youtube.com:
+ `https://accounts.youtube.com/accounts/Logout2?hl=en...&continue=https%3A%2F%2Fmail.google.com%2Fmail&...`
 
-1. The user issues a sign out request from a service (say Blogger)
-2. The user is disconnected from the service and redirected to a sign out endpoint to google accounts
-3. Google accounts disconnects the user and redirects him to all other services (without disclosing the list of services)
-4. On every service the user is disconnected and redirected to the next service to be disconnected 
-5. Finally the user is redirected back to the initial service 
+1. Log out from google.fr:
+ `http://www.google.fr/accounts/Logout2?hl=en&...&continue=https%3A%2F%2Fmail.google.com%2Fmail...`
 
-You can observe this behavior in google Chrome by logging in to Youtube and gmail for example. Then, if you are using Chrome, open developer tools and go to the network tab. Then check the "preserve logs" option. You can then disconnect from Youtube for example. You'll observe a sequence of requests to all google services in which you had a session. The way google does it is to redirect the user using javascript. The reason why they don't perform http redirects is because the sequence can be quite long (up to 20 in some extreme cases), and some users could rich a "too many redirects" error. 
+1. Log out from google.com:
+ `http://www.google.com/accounts/Logout2?hl=en&...&continue=https%3A%2F%2Fmail.google.com%2Fmail&...`
 
-From the outside, the is no way to see what s the sequence of applications to visit for siging out. My guess is that the sequence is stored on the backend and every service queries it to find out what the next service is. The way the backend maintains a list of active services is quite straightforward. It is just a matter storing the information on every sign in, which is possible because in OAuth for example, the user agent visits the authentication server. 
+1. Come back to Google log in page:
+ `https://accounts.google.com/ServiceLogin?service=mail&...&continue=https://mail.google.com/mail/&...`
 
-- Intro : 
-  1. Central authentication system, distributed sessions
-  2. How to sign out from all services
-  3. How I found out about how google handles it
-  
-## General workflow
+The main idea is that the browser actually visits all website from Google on which I have the session and closes the session on all of them. Here are a few interesting remarks about this:
 
-
-
-## Notes 
-- Not handled though `301/302` response : this is because there can be dozens of redirects (but typically 2 or 3 for a standard user) and the browers limits the number of redirections to avoid infinite loops
-- The next service is probably resolved by a backend call to the authentication service
-- Upon sign in on a specific service, the user is probably marked as signed in on this specific service on the authentication service side. 
-- No delete requests are possible 
-
-##TODO
-- Specific terms and impl reference for
-  - direct-auth : process where users are authenticated on every http request on a remote server ()
-  - replicated-auth : process where users are authenticated "once" on a central server, and re-authenticated on every services. This is how OAuth applications work. The user actually exists in the databse of every application
+- **There is no logout phase from gmail**. My guess is that the cookie is destroyed in javascript before initiating the whole sequence. The session is probably destroyed on the server as well by google accounts on a next phase. 
+- **The list and order of service to visit is not in the URLs**. This is probably because the list of services has to be stored on the server for a given user, so there is probably a backend call from every service to know what's the next step. 
+- **Every request has a 200 status code, not 302 or 301**. My first idea would have been to implement that using redirects. Instead google implemented this using javascript. Every page runs a script that changes your location. I think this is to avoid a [*too many redirects* error](https://support.apple.com/en-us/HT203370) when visiting a dozen of services. 
+- We don't see it here, but every service implements the sequence differently. For example if you run it from Youtube, you'll see that everything runs from an iframe, and ends up by posting a message to the parent window on youtube to sign out the user. 
