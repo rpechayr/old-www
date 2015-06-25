@@ -3,6 +3,7 @@ layout: post
 title: The single sign out problem - reverse engineering Google Accounts
 category: blog
 ---
+**TL;DR** -  SSO technologies are well documented for sign-in processes, but handling sign-out can be challenging. 
 
 [Single sign on](https://en.wikipedia.org/wiki/Single_sign-on) is now everywhere. It is used in major tech companies like Facebook and Google, who allow their users to be logged on once across all their products, but also generally allow third party service providers to authenticate their users using an OAuth 2.0 interface. More traditional private companies often have a SSO for their internal websites following a different architecture (most of the time, this SSO is based on Microsoft [Active Directory](https://fr.wikipedia.org/wiki/Active_Directory) or [LDAP](https://fr.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol), or both, and exposes a [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) Interface). The advantage of OAuth 2 is that it also includes complete authorization features to enable third party access to APIs (using OAuth scopes).
 
