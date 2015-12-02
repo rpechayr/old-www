@@ -4,7 +4,7 @@ permalink: /
 description: Romain Péchayre, senior software engineer based in Paris. Currently working as CTO at Applidget.
 ---
 
-My name is Romain Péchayre I am a senior software engineer based in Paris currently working as CTO at [Applidget](http://applidget.com), a company I joined as co-founder in 2010. We build online platforms for event organizers and also work for other startups to help them define and develop their products.
+My name is Romain Péchayre I am a senior software engineer based in Paris currently working as CTO at [Applidget](http://applidget.com), a company I joined as co-founder in 2010. Applidget (23 people) builds cloud-based event software for event organizers.
 
 Prior to Applidget, I was working for Air France as an operations research analyst. 
 
