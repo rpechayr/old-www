@@ -1,9 +1,9 @@
 # Site settings
 title: Romain Péchayre 
 email: rpechayr@gmail.com
-description: "Romain Péchayre, co-founder and CTO at Applidget"
+description: "Romain Péchayre, co-founder and CTO at Yeeld"
 
-rich_description: 'Co-founder and CTO at <a href="http://www.applidget.com">Applidget</>'
+rich_description: 'Co-founder and CTO at <a href="https://www.yeeld.com">Yeeld</>'
 baseurl: ""
 url: "http://romain.pechayre.me"
 twitter_username: rpechayr
