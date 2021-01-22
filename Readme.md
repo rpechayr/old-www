@@ -1,3 +1,5 @@
 # Jekyll website source
 
-This is the code source for my [personal website](http://romain.pechayre.me). It is using Jekyll and hosted on github pages.
+This is the code source for my previous personal website. It is using Jekyll and hosted on github pages.
+
+Head on to my new website: https://pechay.re
